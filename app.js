@@ -18,6 +18,7 @@
 // [START gae_node_request_example]
 const express = require('express');
 const path = require('path');
+const feedparser = require('feedparser-promised');
 
 const app = express();
 
@@ -30,3 +31,17 @@ app.listen(PORT, () => {
   console.log('Press Ctrl+C to quit.');
 });
 // [END gae_node_request_example]
+
+
+ 
+const httpOptions = {
+  uri: 'http://feeds.feedwrench.com/JavaScriptJabber.rss',
+  timeout: 3000,
+  gzip: true,
+  // ...
+};
+ 
+feedparser.parse(httpOptions).then(items => { 
+  items.forEach(item => console.log(item));
+ })
+ .catch(console.error);
