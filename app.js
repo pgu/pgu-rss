@@ -62,8 +62,8 @@ function handleApiFeed (req, res) {
 async function handleFeed (feedId) {
   const feedUrl = feeds[feedId];
   if (feedUrl) {
-    httpOptions.uri = feedUrl;
-    return feedparser.parse(httpOptions).then(items => { 
+    const feedOptions = { uri: feedUrl, ...httpOptions };
+    return feedparser.parse(feedOptions).then(items => { 
       items.forEach(item => console.log(item));
      })
      .catch(console.error);
