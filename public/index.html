@@ -17,7 +17,7 @@
         <button type="button" onclick="fetchFeed('le_monde')">le_monde</button>
     </p>
     <p>
-        <pre id="feedCard"></pre>
+        <div id="feedCard"></div>
     </p>
     <script>
         async function fetchFeed(feedId) {
@@ -30,7 +30,14 @@
                     feedCard.innerHTML = `Looks like there was a problem. Status Code: ${response.status}`;
                 } else {
                     const data = await response.json();
-                    feedCard.innerHTML = data;
+
+                    const widgets = data.map(item => {
+                        return `
+                        <h2>${item.title}</h2>
+                        <p>${item.summary}</p>
+                        `;
+                    });
+                    feedCard.innerHTML = widgets.join('');
 
                 }
             } catch (err) {
