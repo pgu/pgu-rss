@@ -55,7 +55,8 @@ const httpOptions = {
 async function handleApiFeed (req, res) {
   const feedId = req.params.feedId;
   const result = await handleFeed(feedId);
-  return res.end(JSON.stringify(result));
+
+  return res.json(result);
 }
  
 async function handleFeed (feedId) {
