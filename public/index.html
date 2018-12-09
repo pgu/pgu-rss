@@ -11,15 +11,35 @@
     <h1>
         Hello pgu!
     </h1>
-    <p>
-        <button type="button" onclick="fetchFeed('bbc')">BBC</button>
-        <button type="button" onclick="fetchFeed('el_diario')">el_diario</button>
-        <button type="button" onclick="fetchFeed('le_monde')">le_monde</button>
-    </p>
-    <p>
-        <div id="feedCard"></div>
-    </p>
+    <p id="feedButtons"></p>
+    <div id="feedCard"></div>
+
     <script>
+        const feeds = {
+            bbc: 'BBC',
+            el_diario: 'El Diario',
+            el_pais: 'El Pais',
+            le_monde: 'Le Monde',
+            lenta: 'Lenta',
+            nyt: 'NYT',
+            gigazine: 'Gigazine',
+            repubblica: 'Repubblica',
+            spiegel: 'Das Spiegel',
+        };
+
+        function initFeedButtons(feeds) {
+            const widgets = Object.keys(feeds).map(feedKey => {
+                return `
+                    <button type="button" onclick="fetchFeed(${feedKey})">${feeds[feedKey]}</button>
+                `;
+            });
+
+            const feedButtons = document.querySelector('#feedButtons');
+            feedButtons.innerHTML = widgets.join('');
+        }
+
+        initFeedButtons(feeds);
+
         async function fetchFeed(feedId) {
             const feedCard = document.querySelector('#feedCard');
             feedCard.innerHTML = '...';
