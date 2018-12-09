@@ -63,10 +63,8 @@ async function handleFeed (feedId) {
   const feedUrl = feeds[feedId];
   if (feedUrl) {
     const feedOptions = { uri: feedUrl, ...httpOptions };
-    return feedparser.parse(feedOptions).then(items => { 
-      items.forEach(item => console.log(item));
-     })
-     .catch(console.error);
+    const items = await feedparser.parse(feedOptions);
+    return items;
   } else {
     throw `Unknown feedId ${feedId}`;
   }
