@@ -8,13 +8,19 @@
 </head>
 
 <body>
-    Hello pgu!
-    <button type="button" onclick="fetchFeed('bbc')">BBC</button>
-
-    <pre id="feedCard">
+    <h1>
+        Hello pgu!
+    </h1>
+    <p>
+        <button type="button" onclick="fetchFeed('bbc')">BBC</button>
+        <button type="button" onclick="fetchFeed('bbc')">BBC</button>
+        <button type="button" onclick="fetchFeed('bbc')">BBC</button>
+    </p>
+    <p>
+        <pre id="feedCard">
 
     </pre>
-
+    </p>
     <script>
         function fetchFeed(feedId) {
             const feedCard = document.querySelector('#feedCard');
