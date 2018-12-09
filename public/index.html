@@ -40,7 +40,7 @@
 
         async function fetchFeed(feedId) {
             const feedCard = document.querySelector('#feedCard');
-            feedCard.innerHTML = '...';
+            feedCard.innerHTML = '<p class="loading-feeds">...</p>';
 
             try {
                 const response = await fetch(`./api/feeds/${feedId}`);
