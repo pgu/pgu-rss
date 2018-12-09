@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/main.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-Hello pgu!
+    Hello pgu!
+    <button type="button" onclick="fetchFeed('bbc')">BBC</button>
+
+    <pre id="feedCard">
+
+    </pre>
+
+    <script>
+        function fetchFeed(feedId) {
+            const feedCard = document.querySelector('#feedCard');
+            feedCard.innerHTML = '...';
+
+            try {
+                const response = await fetch(`./api/feeds/${feedId}`);
+                if (response.status !== 200) {
+                    feedCard.innerHTML = `Looks like there was a problem. Status Code: ${response.status}`;
+                } else {
+                    const data = response.json();
+                    feedCard.innerHTML = data;
+
+                }
+            } catch (err) {
+                console.log('Fetch Error :-S', err);
+                feedCard.innerHTML = '>> Error ' + err;
+            }
+        }
+
+
+    </script>
+
 </body>
+
 </html>
