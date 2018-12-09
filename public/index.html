@@ -13,14 +13,14 @@
     </h1>
     <p>
         <button type="button" onclick="fetchFeed('bbc')">BBC</button>
-        <button type="button" onclick="fetchFeed('bbc')">BBC</button>
-        <button type="button" onclick="fetchFeed('bbc')">BBC</button>
+        <button type="button" onclick="fetchFeed('el_diario')">el_diario</button>
+        <button type="button" onclick="fetchFeed('le_monde')">le_monde</button>
     </p>
     <p>
         <pre id="feedCard"></pre>
     </p>
     <script>
-        function fetchFeed(feedId) {
+        async function fetchFeed(feedId) {
             const feedCard = document.querySelector('#feedCard');
             feedCard.innerHTML = '...';
 

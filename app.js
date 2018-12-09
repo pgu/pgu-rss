@@ -52,7 +52,7 @@ const httpOptions = {
   // ...
 };
 
-function handleApiFeed (req, res) {
+async function handleApiFeed (req, res) {
   const feedId = req.params.feedId;
   const result = await handleFeed(feedId);
   return res.end(JSON.stringify(result));
