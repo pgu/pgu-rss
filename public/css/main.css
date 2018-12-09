@@ -5,8 +5,8 @@
 }
 
 .feedButton {
-    font-size: 6rem;
-    padding: .5em;
+    font-size: 2rem;
+    padding: .5em 0;
     border-radius: .2em;
     border: 1px solid black;
     background: transparent;
@@ -14,6 +14,6 @@
 
 .feedItem h2, 
 .feedItem p {
-    font-size: 6rem;
+    font-size: 3rem;
 }
 
