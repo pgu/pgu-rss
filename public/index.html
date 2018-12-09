@@ -28,7 +28,7 @@
         function initFeedButtons(feeds) {
             const widgets = Object.keys(feeds).map(feedKey => {
                 return `
-                    <button type="button" onclick="fetchFeed('${feedKey}')">${feeds[feedKey]}</button>
+                    <button type="button" class="feedButton" onclick="fetchFeed('${feedKey}')">${feeds[feedKey]}</button>
                 `;
             });
 
@@ -51,8 +51,10 @@
 
                     const widgets = data.map(item => {
                         return `
-                        <h2>${item.title}</h2>
-                        <p>${item.summary}</p>
+                        <div class="feedItem">
+                            <h2>${item.title}</h2>
+                            <p>${item.summary}</p>
+                        </div>
                         `;
                     });
                     feedCard.innerHTML = widgets.join('');

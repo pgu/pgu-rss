@@ -1,0 +1,19 @@
+
+#feedButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.feedButton {
+    font-size: 6rem;
+    padding: .5em;
+    border-radius: .2em;
+    border: 1px solid black;
+    background: transparent;
+}
+
+.feedItem h2, 
+.feedItem p {
+    font-size: 6rem;
+}
+
