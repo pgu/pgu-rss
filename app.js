@@ -22,6 +22,8 @@ const feedparser = require('feedparser-promised');
 
 const app = express();
 
+// routes
+app.get('/api/feeds/:feedId', handleApiFeed)
 app.use('/', express.static(path.join(__dirname, 'public')))
 
 // Start the server
@@ -32,16 +34,41 @@ app.listen(PORT, () => {
 });
 // [END gae_node_request_example]
 
+const feeds = {
+  bbc: 'http://feeds.bbci.co.uk/news/world/rss.xml',
+  el_diario: 'https://www.eldiario.es/rss/',
+  el_pais: 'http://ep00.epimg.net/rss/elpais/portada.xml',
+  le_monde: 'https://www.lemonde.fr/rss/une.xml',
+  lenta: 'http://lenta.ru/rss/news',
+  nyt: 'https://www.nytimes.com/services/xml/rss/nyt/HomePage.xml',
+  gigazine: 'https://gigazine.net/news/rss_2.0/',
+  repubblica: 'http://www.repubblica.it/rss/homepage/rss2.0.xml',
+  spiegel: 'http://www.spiegel.de/schlagzeilen/tops/index.rss',
+};
 
- 
 const httpOptions = {
-  uri: 'http://feeds.feedwrench.com/JavaScriptJabber.rss',
+  uri: null,
   timeout: 3000,
   gzip: true,
   // ...
 };
+
+function handleApiFeed (req, res) {
+  const feedId = req.params.feedId;
+  const result = await handleFeed(feedId);
+  return res.end(JSON.stringify(result));
+}
  
-feedparser.parse(httpOptions).then(items => { 
-  items.forEach(item => console.log(item));
- })
- .catch(console.error);
+async function handleFeed (feedId) {
+  const feedUrl = feeds[feedId];
+  if (feedUrl) {
+    httpOptions.uri = feedUrl;
+    return feedparser.parse(httpOptions).then(items => { 
+      items.forEach(item => console.log(item));
+     })
+     .catch(console.error);
+  } else {
+    throw `Unknown feedId ${feedId}`;
+  }
+}
+
