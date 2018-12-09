@@ -30,7 +30,7 @@
         function initFeedButtons(feeds) {
             const widgets = Object.keys(feeds).map(feedKey => {
                 return `
-                    <button type="button" onclick="fetchFeed(${feedKey})">${feeds[feedKey]}</button>
+                    <button type="button" onclick="fetchFeed('${feedKey}')">${feeds[feedKey]}</button>
                 `;
             });
 
