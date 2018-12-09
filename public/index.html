@@ -29,7 +29,7 @@
                 if (response.status !== 200) {
                     feedCard.innerHTML = `Looks like there was a problem. Status Code: ${response.status}`;
                 } else {
-                    const data = response.json();
+                    const data = await response.json();
                     feedCard.innerHTML = data;
 
                 }
