@@ -47,7 +47,6 @@ const feeds = {
 };
 
 const httpOptions = {
-  uri: null,
   timeout: 3000,
   gzip: true,
   // ...
@@ -62,7 +61,7 @@ function handleApiFeed (req, res) {
 async function handleFeed (feedId) {
   const feedUrl = feeds[feedId];
   if (feedUrl) {
-    const feedOptions = { uri: feedUrl, ...httpOptions };
+    const feedOptions = { ...httpOptions, uri: feedUrl };
     const items = await feedparser.parse(feedOptions);
     return items;
   } else {
