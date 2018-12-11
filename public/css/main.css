@@ -353,3 +353,11 @@
     font-size: 3rem;
 }
 
+.feedSummaryContainer {
+  padding-right: 5rem;
+}
+
+.feedSummary {
+  max-height: 20.8rem;
+  overflow: auto;
+}

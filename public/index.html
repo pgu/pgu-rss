@@ -55,7 +55,9 @@
                         return `
                         <div class="feedItem">
                             <h2>${item.title}</h2>
-                            <div><p>${item.summary}</p></div>
+                            <div class="feedSummaryContainer">
+                                <div class="feedSummary"><p>${item.summary}</p></div>
+                            </div>
                         </div>
                         `;
                     });
