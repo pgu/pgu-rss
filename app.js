@@ -37,7 +37,7 @@ app.listen(PORT, () => {
 const feeds = {
   bbc: 'http://feeds.bbci.co.uk/news/world/rss.xml',
   el_diario: 'https://www.eldiario.es/rss/',
-  el_pais: 'http://ep00.epimg.net/rss/elpais/portada.xml',
+  el_pais: 'https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada',
   le_monde: 'https://www.lemonde.fr/rss/une.xml',
   lenta: 'http://lenta.ru/rss/news',
   nyt: 'https://www.nytimes.com/services/xml/rss/nyt/HomePage.xml',
